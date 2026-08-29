@@ -53,14 +53,14 @@ SUPPORT = "@monarqteam"
 # NOTE: only bots whose owner bought a username on Fragment may send these.
 # --------------------------------------------------------------------------
 EMOJI = {
-    "crown":   ("", "\U0001F451"),          # 👑
-    "cart":    ("", "\U0001F6D2"),          # 🛒
-    "bolt":    ("", "\u26A1"),              # ⚡
-    "warning": ("", "\u26A0\uFE0F"),        # ⚠️
-    "link":    ("", "\U0001F517"),          # 🔗
+    "gem":   ("5226656353744862682", "\U0001F48E"),  # 💎 header
+    "star":  ("5980995951160987855", "\u2B50"),      # ⭐ catalogue
+    "check": ("5278622189556354905", "\u2705"),      # ✅ list items
+    "bolt":  ("5084974483685507801", "\u26A1"),      # ⚡ instant delivery
+    "cross": ("5042112436648281096", "\u274C"),      # ❌ impersonation warning
+    "globe": ("5134452506935427991", "\U0001F30D"),  # 🌍 store link
+    "user":  ("5321304384838057247", "\U0001F464"),  # 👤 official contact
 }
-
-BULLET = "\u2022"  # plain bullet — never a custom emoji, Telegram rejects non-emoji
 
 
 def e(key: str, premium: bool) -> str:
