@@ -77,18 +77,18 @@ def build_ad() -> str:
     b = pe("check")
     return (
         f"{pe('gem')} <b>MONARQ — PREMIUM DIGITAL STORE</b>\n\n"
-        f"{pe('star')} Browse our full catalogue of premium digital products at "
+        f"{pe('star')} Browse full catalogue of premium digital products at "
         f'<a href="{SHOP_URL}">themonarq.shop</a>:\n\n'
         f"{b} RDP &amp; VPS\n"
         f"{b} VPN &amp; Proxies\n"
         f"{b} Webmail &amp; SMTP\n"
         f"{b} Verified accounts\n"
         f"{b} and much more\n\n"
-        f"{pe('bolt')} <b>Instant delivery.</b> Every order is delivered to you on Telegram "
-        f"the moment payment is confirmed — no waiting, no manual processing.\n\n"
-        f"{pe('cross')} <b>Beware of impersonators.</b> Our only official Telegram account is "
-        f"{SUPPORT}. We never contact customers first from any other account, and we accept "
-        f"payment through no other channel. Verify before you pay.\n\n"
+        f"{pe('bolt')} <b>Instant orders.</b> Every order is delivered to you on Telegram "
+        f"the moment payment is confirmed.\n\n"
+        f"{pe('cross')} <b>Beware of impersonators.</b> My only official Telegram account is "
+        f"{SUPPORT}. I will never contact you first from any other account, and monarqstore "
+        f"accept payment through no other channel. Verify before you pay.\n\n"
         f"{pe('globe')} <b>Store:</b> {SHOP_URL}\n"
         f"{pe('user')} <b>Official contact:</b> {SUPPORT}"
     )
