@@ -53,13 +53,14 @@ SUPPORT = "@monarqteam"
 # NOTE: only bots whose owner bought a username on Fragment may send these.
 # --------------------------------------------------------------------------
 EMOJI = {
-    "crown":   ("5368324170671202286", "\U0001F451"),  # 👑
-    "cart":    ("5372981976804366741", "\U0001F6D2"),  # 🛒
-    "bullet":  ("5368324170671202286", "\u2022"),      # •
-    "bolt":    ("5375464961822695044", "\u26A1"),      # ⚡
-    "warning": ("5372981976804366741", "\u26A0"),      # ⚠
-    "link":    ("5375464961822695044", "\U0001F517"),  # 🔗
+    "crown":   ("", "\U0001F451"),          # 👑
+    "cart":    ("", "\U0001F6D2"),          # 🛒
+    "bolt":    ("", "\u26A1"),              # ⚡
+    "warning": ("", "\u26A0\uFE0F"),        # ⚠️
+    "link":    ("", "\U0001F517"),          # 🔗
 }
+
+BULLET = "\u2022"  # plain bullet — never a custom emoji, Telegram rejects non-emoji
 
 
 def e(key: str, premium: bool) -> str:
@@ -71,7 +72,7 @@ def e(key: str, premium: bool) -> str:
 
 
 def build_ad(premium: bool = True) -> str:
-    b = e("bullet", premium)
+    b = BULLET
     return (
         f"{e('crown', premium)} <b>MONARQ — PREMIUM DIGITAL STORE</b>\n\n"
         f"{e('cart', premium)} Browse our full catalogue of premium digital products at "
@@ -112,9 +113,10 @@ async def send_ad(bot, chat_id, reply_to: int | None = None):
     try:
         return await bot.send_message(text=build_ad(premium=True), **kwargs)
     except BadRequest as exc:
-        if "emoji" not in str(exc).lower():
+        reason = str(exc).lower()
+        if not any(word in reason for word in ("emoji", "entity", "entities", "parse")):
             raise
-        log.warning("Premium emoji rejected (%s) — sending plain version.", exc)
+        log.warning("Custom emoji rejected (%s) — sending plain version.", exc)
         return await bot.send_message(text=build_ad(premium=False), **kwargs)
 
 
